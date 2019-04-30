@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<script type="text/javascript" src="http://blog.dota2.com/wp-includes/js/jquery/jquery.js"></script>
+<script language="javascript">
+var bForceClientView = false;
+var languageMap = {
+	'english': 'blog',
+	'russian': 'ru',
+	'spanish': 'es',
+	'french': 'fr',
+	'german': 'de',
+	'chinese': 'cn',
+	'schinese': 'cn',
+	'tchinese': 'cn',
+	'portuguese': 'br',
+	'brazilian': 'br',
+	'korean': 'kr',
+	'koreana': 'kr'
+};
+
+var queryArgs = document.location.search.substring(1).split('&');
+argsParsed = {};
+for (i=0; i < queryArgs.length; i++)
+{
+    arg = unescape(queryArgs[i]);
+    if (arg.indexOf('=') == -1)
+    {
+        argsParsed[arg.trim()] = true;
+    }
+    else
+    {
+        keyValuePair = arg.split('=');
+        argsParsed[keyValuePair[0].trim()] = keyValuePair[1].trim();
+    }
+}
+if ( argsParsed['l'] && languageMap[argsParsed['l']] )
+{
+	domain = languageMap[argsParsed['l']] + '.dota2.com';
+	if ( location.href.indexOf( domain ) == -1 && location.href.indexOf( 'blog.dota2.com' ) != -1 )
+	{
+		newURL = location.href.replace( 'blog.dota2.com', domain );
+		location.href = newURL;
+	}
+	
+}
+if ( argsParsed['clientview'] )
+{
+	bForceClientView = true;
+}
+var locSuffix = '';
+for ( var lang in languageMap )
+{
+	if ( lang == 'english' )
+		continue;
+	domain = languageMap[lang] + '.dota2.com';
+	if ( location.href.indexOf( domain ) != -1 )
+	{
+		locSuffix = '_' + languageMap[lang];
+	}
+}
+</script>
+<link rel="shortcut icon" href="http://www.dota2.com/images/favicon.ico" type="image/x-icon" />
+<meta charset="UTF-8" />
+<title>Dota 2</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="stylesheet" type="text/css" media="all" href="http://blog.dota2.com/wp-content/themes/dota2_2014/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="http://cdn.dota2.com/apps/dota2/css/static/font_goudytrajan.css" />
+<link rel="pingback" href="http://blog.dota2.com/xmlrpc.php" />
+<!-- image for sharing on reddit/facebook -->
+<link rel="image_src" href="http://blog.dota2.com/images/logo_112.png" />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Dota 2 &raquo; Feed" href="http://blog.dota2.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Dota 2 &raquo; Comments Feed" href="http://blog.dota2.com/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blog.dota2.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.0.4"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-block-library-css'  href='http://blog.dota2.com/wp-includes/css/dist/block-library/style.min.css?ver=5.0.4' type='text/css' media='all' />
+<link rel='stylesheet' id='wpml-legacy-vertical-list-0-css'  href='//blog.dota2.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-list-vertical/style.css?ver=1' type='text/css' media='all' />
+<style id='wpml-legacy-vertical-list-0-inline-css' type='text/css'>
+.wpml-ls-sidebars-secondary-widget-area, .wpml-ls-sidebars-secondary-widget-area .wpml-ls-sub-menu, .wpml-ls-sidebars-secondary-widget-area a {border-color:#cdcdcd;}.wpml-ls-sidebars-secondary-widget-area a {color:#444444;background-color:#ffffff;}.wpml-ls-sidebars-secondary-widget-area a:hover,.wpml-ls-sidebars-secondary-widget-area a:focus {color:#000000;background-color:#eeeeee;}.wpml-ls-sidebars-secondary-widget-area .wpml-ls-current-language>a {color:#444444;background-color:#ffffff;}.wpml-ls-sidebars-secondary-widget-area .wpml-ls-current-language:hover>a, .wpml-ls-sidebars-secondary-widget-area .wpml-ls-current-language>a:focus {color:#000000;background-color:#eeeeee;}
+.wpml-ls-statics-shortcode_actions, .wpml-ls-statics-shortcode_actions .wpml-ls-sub-menu, .wpml-ls-statics-shortcode_actions a {border-color:#cdcdcd;}.wpml-ls-statics-shortcode_actions a {color:#444444;background-color:#ffffff;}.wpml-ls-statics-shortcode_actions a:hover,.wpml-ls-statics-shortcode_actions a:focus {color:#000000;background-color:#eeeeee;}.wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a {color:#444444;background-color:#ffffff;}.wpml-ls-statics-shortcode_actions .wpml-ls-current-language:hover>a, .wpml-ls-statics-shortcode_actions .wpml-ls-current-language>a:focus {color:#000000;background-color:#eeeeee;}
+#lang_sel_list a.lang_sel_sel, #lang_sel_list ul a, #lang_sel_list ul a:visited, #lang_sel_list_list ul a:visited, #lang_sel_list a, #lang_sel_list a:visited, #lang_sel_list li { border:none; border-width:0; padding:0; margin:0; color: #9c3021; font-family: Georgia, \\\"Bitstream Charter\\\", serif; background-color:transparent; font-size:12px; line-height:16px; }
+</style>
+<script type='text/javascript' src='http://blog.dota2.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://blog.dota2.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpml_xdomain_data = {"css_selector":"wpml-ls-item","ajax_url":"http:\/\/blog.dota2.com\/wp-admin\/admin-ajax.php","current_lang":"en"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://blog.dota2.com/wp-content/plugins/sitepress-multilingual-cms/res/js/xdomain-data.js?ver=4.1.4'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.dota2.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.dota2.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.0.4" />
+<meta name="generator" content="WPML ver:4.1.4 stt:61,1,4,3,29,44,47,2;" />
+<script language="javascript">
+function populateUniqueUsers( dataJSON )
+{
+	if ( dataJSON['users_last_month'] )
+	{
+		jQuery('#rightColPlayerCountNum').html( addCommas( dataJSON['users_last_month'] ) );
+	}
+}
+function populatePrizePool( dataJSON )
+{
+	if ( dataJSON['dollars'] )
+	{
+		jQuery('#prizeVal').html( '$' + addCommas( dataJSON['dollars'] ) );
+	}
+}
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) 
+	{
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
+jQuery(document).ready(
+	function()
+	{
+//		topLocImage = 'http://cdn.dota2.com/apps/dota2/images/blogfiles/bg_compendium_2014' + locSuffix + '.jpg';
+//		jQuery('#calloutHeader').css( 'background-image', 'url('+topLocImage+')' );
+		var baseURL = ( location.protocol == 'https:' ) ? 'https://www.dota2.com/' : 'http://www.dota2.com/';
+		URL = baseURL + 'jsfeed/uniqueusers';
+		jQuery.ajax(
+			{
+				type:'GET',
+				cache:true,
+				url: URL,
+				dataType:'jsonp',
+				jsonpCallback:'populateUniqueUsers'
+			}
+		);
+	}
+);
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33822635-11']);
+  _gaq.push(['_setDomainName', 'dota2.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body class="home blog">
+
+<div id="navBarShadowOnly"></div>
+
+<div id="navBarBGRepeat" style="display:none;">
+	<div id="navBarBGRepeat" class="DotaFont">
+		<div id="navBarShadow"></div>
+		<div id="navBarBG">
+			<div id="navBar">
+				<div id="navLoginAndLanguage">
+					<div id="languageSelector">
+						<a href="javascript:void(0)">Language</a> <img style="padding-bottom: 2px;" src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/btn_arrow_down.png" width="9" height="4" border="0" /><br />
+						<div style="display:none;" id="languageList">
+								<a class="languageItem" href="http://blog.dota2.com">English</a>
+								<a class="languageItem" href="http://es.dota2.com">Spanish</a>
+								<a class="languageItem" href="http://de.dota2.com">German</a>
+								<a class="languageItem" href="http://fr.dota2.com">French</a>
+								<a class="languageItem" href="http://kr.dota2.com">Korean</a>
+								<a class="languageItem" href="http://br.dota2.com">Portuguese</a>
+								<a class="languageItem" href="http://ru.dota2.com">Russian</a>
+								<a class="languageItem" href="http://cn.dota2.com">Chinese</a>
+						</div>
+					</div>
+				</div>
+				<span class="navItem navItemDotaLogo">
+					<a class="navBarItem DotaFont" href="http://www.dota2.com/">
+						<img border="0" class="DotaLogo" src="http://cdn.dota2.com/apps/dota2/images/nav/logo.png"/>
+					</a>
+				</span>
+
+				<span class="navItem">
+					<a class="navBarItem DotaFont" href="http://blog.dota2.com/">News</a>
+				</span>
+
+				<span class="navItem">
+					<a class="navBarItem DotaFont" href="http://www.dota2.com/store/">Store</a>
+				</span>
+
+				<span class="navItem">
+					<a class="navBarItem DotaFont" href="javascript:void(0)">Heropedia</a>
+					<div style="display:none;" class="menuSubItemList">
+						<a class="DotaFont" href="http://www.dota2.com/heroes/">Heroes</a>
+						<a class="DotaFont" href="http://www.dota2.com/items/">Item Explorer</a>
+						<a class="DotaFont" href="http://www.dota2.com/workshop/builds">Builds</a>
+						<a class="DotaFont" href="http://steamcommunity.com/app/570/guides" target="_blank">Steam Guides</a>
+						<a class="DotaFont" href="http://www.dota2.com/quiz">The Shopkeeper's Quiz</a>
+					</div>
+					<img class="dn_arrow" src="http://cdn.dota2.com/apps/dota2/images/nav/arrow.png"/>
+				</span>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script language="javascript">
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+	var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+	if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function PreloadHeaderImages()
+{
+	//  Preload header rollover images
+	//MM_preloadImages(
+	//);
+}
+
+if ( document.addEventListener ) {
+	document.addEventListener( "DOMContentLoaded", PreloadHeaderImages, false );
+} else if ( document.attachEvent ) {
+	document.attachEvent( 'onDomContentLoaded', PreloadHeaderImages );
+}
+
+</script>
+
+
+
+<script language="javascript">
+function closeSubMenu( target ) {
+	jQuery(target).find('.dn_arrow').attr( "src", "http://cdn.dota2.com/apps/dota2/images/nav/arrow.png" );
+	jQuery(target).find('.menuSubItemList').hide();
+}
+
+function closeAllSubMenus() {
+	jQuery('.navItem').each( function() {
+		closeSubMenu( jQuery(this) );
+	});
+}
+
+function openSubMenu( target ) {
+	closeAllSubMenus();
+
+	jQuery(target).find('.dn_arrow').attr( "src", "http://cdn.dota2.com/apps/dota2/images/nav/arrow_over.png" );
+
+	// Show the sub-menu
+	var subItemList = jQuery(target).find('.menuSubItemList');
+	if ( subItemList.length ) {
+		var itemTop = jQuery(target).position().top + jQuery(target).outerHeight() - 16;
+		var itemLeft = jQuery(target).position().left;
+		subItemList
+			.css({
+				"top": itemTop + 'px',
+				"left": itemLeft + 'px'
+			})
+			.fadeIn( 'fast' );
+	}
+}
+
+jQuery(document).ready( function () {
+	// Deal with the nav bars
+	jQuery('.navItem').each( function() {
+		jQuery(this).hover( function () {
+			jQuery(this)
+				.find('a.navBarItem img.top')
+				.animate({
+					"opacity": 1
+				}, 100 );
+			if ( jQuery(this).find('.menuSubItemList').length !== 0 ) {
+				openSubMenu( this );
+			}
+		},
+		function () {
+			jQuery(this)
+			.find('a.navBarItem img.top')
+			.animate({
+				"opacity": 0
+			}, 100 );
+			if ( jQuery(this).find('.menuSubItemList').length !== 0 ) {
+				closeSubMenu(this);
+			}
+		}
+		);
+	});
+
+	// Deal with header drop-downs
+	var strMenus = '#languageSelector';
+					strMenus += ',#adminSelector';
+		strMenus += ',#supportSelector';		
+	jQuery(strMenus).each( function() {
+		jQuery(this).hover( function () {
+			//show its submenu
+			jQuery( this ).find( 'div' ).fadeIn( 'fast' );
+		},
+		function () {
+			//hide its submenu
+			jQuery( this ).find( 'div' ).hide();
+		}
+		);
+	});
+});
+</script>
+<!--
+<div id="calloutHeader">
+	<div id="calloutHeaderLink">
+		<div id="calloutHeaderLink"><a href="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/keyart_rubik.png"><img src="http://blog.dota2.com/wp-includes/images/blank.gif" width="938" height="377" border="0" /></a></div>
+	</div>
+</div>
+-->
+<script language="javascript">
+//var rand = Math.random();
+//var which = ( rand < .34 ) ? 'ezalor' : ( rand < .67 ? 'nyx' : 'visage' );
+//document.write( '<div id="calloutHeader" style="background-image:url(\'http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/bg_'+which+'.jpg\');">' );
+//document.write( '<div id="calloutHeaderLink"><a href="http://www.dota2.com/hero/'+(which == 'ezalor' ? 'Keeper_of_the_Light/' : ( which == 'nyx' ? 'Nyx_Assassin/' : 'Visage/'))+'"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="938" height="377" border="0" /></a></div>' );
+//document.write( '</div>' );
+</script>
+<div id="calloutHeader" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/bg_five_heroes.jpg');">
+    <div id="calloutHeaderLink">
+        <div id="calloutHeaderLink"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="938" height="377" border="0" />
+    </div>
+</div>
+<div id="mainContentSideBG">
+	<div id="mainContentBG">
+		<div id="mainContent">
+			<div id="rightColHeaderImage"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_bg_top.png" width="292" height="24" border="0" /></div>
+			<div id="noTabArea"></div>
+			<div id="tabArea" style="display:none;">
+				<!--<img id="tabAreaBG" src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/tabs_bg.png" width="659" height="61" border="0" />-->
+				<div style="margin-left:4px;">
+					<a href="?" class="btn_tab_on fl_left">
+						<div class="btn_left"></div>
+						<div class="btn_right"></div>
+						BLOG					</a>
+						<div class="tab_split"></div>
+					<a href="http://www.dota2.com/news/updates/" class="btn_tab fl_left">
+						<div class="btn_left"></div>
+						<div class="btn_right"></div>
+						UPDATES					</a>
+					<div class="tab_split"></div>
+				</div>
+			</div>
+<script language="javascript">
+if ( navigator.userAgent.toLowerCase().indexOf('dota 2 client') == -1 && !bForceClientView )
+{
+	document.getElementById('navBarShadowOnly').style.display = 'none';
+	document.getElementById('navBarBGRepeat').style.display = 'block';
+	document.getElementById('noTabArea').style.display = 'none';
+	document.getElementById('tabArea').style.display = 'block';
+}
+</script>
+
+		<div id="primary" >
+
+			<a class="hoverBG" style="display:none" id="rightColGetDotaLink" href="http://store.steampowered.com/app/570/"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="264" height="77" border="0" /></a>
+				<div id="rightColPlayerCount"><div id="rightColPlayerCountNum">Loading..</div></div>
+<script language="javascript">
+if ( navigator.userAgent.toLowerCase().indexOf('dota 2 client') == -1 && !bForceClientView )
+{
+	document.getElementById('rightColGetDotaLink').style.display = 'block';
+}
+jQuery( function()
+	{
+		if ( navigator.userAgent.toLowerCase().indexOf('dota 2 client') != -1 || bForceClientView )
+		{
+			jQuery('.rcbLink').each( function() { 
+				if ( !jQuery(this).hasClass( 'noClientHide' ) )
+					jQuery(this).hide(); 
+			} );
+		}
+	}
+);
+</script>
+
+<a class="hoverBG rcbLink" href="http://www.dota2.com/frosthaven/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_frosthaven_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			
+			<div id="recentPostsTopBar"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_recentposts_top.png" width="294" height="10" border="0" /></div>
+			<div id="recentPostsSearchArea">
+				<div id="rightColSearchArea">
+					<form role="search" method="get" id="searchform" action="http://blog.dota2.com/">
+					<input id="rightColSearchInput" type="text" value="Search" onfocus="if(this.value=='Search'){this.value=''}" onblur="if(this.value==''){this.value='Search'}" name="s" id="s" />
+					<input type="image" id="rightColSearchSubmit" src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/searchbar_submit.jpg" width="21" height="20" border="0" />
+					</form>
+				</div>
+						<div class="widget valve_widget_recent_entries">				
+									<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/03/new-dota-plus-feature/" title="New Dota Plus Feature">New Dota Plus Feature</a>
+				<div class="recent_entry_date">Mar. 15 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/03/new-hero-mars/" title="New Hero — Mars">New Hero — Mars</a>
+				<div class="recent_entry_date">Mar. 5 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/02/new-bloom-rewards/" title="New Bloom Rewards">New Bloom Rewards</a>
+				<div class="recent_entry_date">Feb. 1 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/new-ranked-season-update/" title="New Ranked Season Update">New Ranked Season Update</a>
+				<div class="recent_entry_date">Jan. 29 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/the-chongqing-major/" title="The Chongqing Major">The Chongqing Major</a>
+				<div class="recent_entry_date">Jan. 20 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/true-sight-the-international-2018/" title="True Sight — The International 2018">True Sight — The International 2018</a>
+				<div class="recent_entry_date">Jan. 14 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/12/true-sight-world-premiere/" title="True Sight World Premiere">True Sight World Premiere</a>
+				<div class="recent_entry_date">Dec. 22 2018</div>
+			</div>
+									</div>				<div id="recentPostsBottomBar"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_recentposts_bot.png" width="294" height="10" border="0" /></div>
+			</div>
+			
+			<a class="hoverBG" id="lbLink" href="http://www.dota2.com/leaderboards/" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_leaderboards.png');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="262" height="48" border="0" /></a>
+
+			<div id="rightColDotaLinks">
+				<a id="dotaLinkImgFacebook" class="rightColDotaLinkImg" href="http://www.facebook.com/pages/Dota-2/106876872711112" target="_blank"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/link_icon_facebook.png" width="23" height="23" border="0" /></a>
+				<a id="dotaLinkFacebook" class="rightColDotaLink" href="http://www.facebook.com/pages/Dota-2/106876872711112" target="_blank">Facebook</a>
+
+				<a id="dotaLinkImgTwitter" class="rightColDotaLinkImg" href="http://twitter.com/DOTA2" target="_blank"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/link_icon_twitter.png" width="24" height="24" border="0" /></a>
+				<a id="dotaLinkTwitter" class="rightColDotaLink" href="http://twitter.com/DOTA2" target="_blank">Twitter</a>
+
+				<a id="dotaLinkImgYoutube" class="rightColDotaLinkImg" href="http://www.youtube.com/user/dota2" target="_blank"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/link_icon_youtube.png" width="20" height="24" border="0" /></a>
+				<a id="dotaLinkYoutube" class="rightColDotaLink" href="http://www.youtube.com/user/dota2" target="_blank">YouTube</a>
+
+				<a id="dotaLinkImgSteam" class="rightColDotaLinkImg" href="http://store.steampowered.com/app/570/" target="_blank"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/link_icon_steam.png" width="24" height="24" border="0" /></a>
+				<a id="dotaLinkSteam" class="rightColDotaLink" href="http://store.steampowered.com/app/570/" target="_blank">Steam</a>
+				
+			
+			</div>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/720" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_720_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/grimstroke" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_grimstroke_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/international/overview" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_international_2018_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/international/battlepass" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_battlepass_2018_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/feastofabscession" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_feastofabscession_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/plus" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/rightcol_dotaplus_button.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/duelingfates/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_duelingfates.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/international/overview/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_ti7.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/international/battlepass" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_ti7_battle_pass.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/700" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_700a.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+ 	<a class="hoverBG rcbLink" href="http://www.dota2.com/darkrift" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_darkrift.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/international/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_ti6.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+ 	 <a class="hoverBG rcbLink" href="http://www.dota2.com/international/battlepass" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rightcol_ti6battlepass.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com.cn/theshanghaimajor/english/overview" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_theshanghaimajor2016.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/winter2016" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_winterbattlepass2016.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/balanceofpower" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_balanceofpower.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+	<a class="hoverBG rcbLink" href="http://www.thefrankfurtmajor.com/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_frankfurt2015.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>			
+	<a class="hoverBG rcbLink" href="http://www.dota2.com/reborn/updates/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_rebornupdates.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/international2015/overview/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_ti5.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/international2015/compendium/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_ti5compendium.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/newbloom/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_newbloom15.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/shiftingsnows/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_shiftingsnows.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/oracle/day2/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_foreseerscontract.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/rekindlingsoul/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_rekindlingsoul.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/techies/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_techies.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/international2014/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_international4.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/springcleaning/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_springcleaning.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+		<a class="hoverBG rcbLink noClientHide" href="http://www.freetoplaythemovie.com/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_freetoplay.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/newbloom2014/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_newbloom.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/wraithnight/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_wraithnight.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/threespirits/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_3spirits.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/firstblood/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_firstblood.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/thebetaisover/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_betaover.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/international2013/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_international3.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/greeviling/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_greeviling.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/diretide/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_diretide.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/aegisofchampions/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_aegis.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/tournaments/international2012/mainevent/results/champions/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_international2.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/spoilsofwar/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_spoils.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/tournaments/international2011/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_international1.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://store.steampowered.com/video/570/81026" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_trailer.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			<a class="hoverBG rcbLink" href="http://www.dota2.com/comics/are_we_heroes_yet/" target="_blank" style="background-image:url('http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/rcb_comic.jpg');"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/2014/trans.gif" width="256" height="164" border="0" /></a>
+			
+			<div id="rightColFeedback">
+				<div id="feedbackForums">
+					<a href="http://dev.dota2.com" target="_blank">Feedback Forums</a><br />
+					For general feedback about the game.				</div>
+				<div id="feedbackSupport">
+					<a href="http://support.steampowered.com" target="_blank">Steam Support</a><br />
+					Visit the support site for any issues you may be having with your account.				</div>
+				<div id="feedbackContact">
+					<a href="http://www.valvesoftware.com/email.php?recipient=Dota+2+Team" target="_blank">Contact the Team</a><br />
+					To contact us directly about specific matters.				</div>
+			</div>
+			
+			<p><br /></p>
+			<p><br /></p>
+			<br /><br />
+
+		</div>
+		
+			<div id="mainLoop">
+			
+	<div id="nav-above" class="navigation">
+		<div class="nav-previous"><a href="http://blog.dota2.com/page/2/?l=english" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+		<div class="nav-next"></div>
+	</div><!-- #nav-above -->
+
+
+		<div id="post-13378" class="post-13378 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/03/new-dota-plus-feature/" title="Permalink to New Dota Plus Feature" rel="bookmark">New Dota Plus Feature</a></h2>
+
+			<div class="entry-meta">
+				March 15, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><a href="http://www.dota2.com/dpc"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/dpcmca_blog_im_zqyib.png" alt="" width="100%" /></a></p>
+<p>Today marks the release of a new Dota Plus feature designed to enhance your experience for every Dota Pro Circuit event.</p>
+<p>Available now in the <a href="https://itunes.apple.com/us/app/dota-pro-circuit/id1451895369?mt=8">iOS App Store</a> and the <a href="https://play.google.com/store/apps/details?id=com.valvesoftware.dota.dpc">Google Play Store</a>, the Dota Pro Circuit companion app lets you earn Shards by predicting the winners of DPC matches, compete for even more Shards in the Fantasy Challenge, and follow all of this season&#8217;s DPC action in real time, all from the comfort and convenience of your mobile device.</p>
+<p>You&#8217;ll be able to wager your personal stash of Plus Shards to predict the winners of DPC matches, with winnings added to your in-game total. The Fantasy Challenge offers the chance for more Shards, as you compete against your friends and the entire world to put together the best roster of pro players at each event. In addition, you&#8217;ll have access to a dynamic News Feed that features your personalized favorite teams and players, helping you stay on top of every DPC development along the road to The International.</p>
+<p>Check out a full list of the app&#8217;s features <a href="http://www.dota2.com/dpc">here.</a></p>
+<p>Android customers who are unable to access the Google Play Store can find a <a href="http://cdn.dota2.com/apps/dota2/assets/dota_pro_circuit_v10.apk">direct download here</a>.</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+				<!-- inter-post rule -->
+		<div class="dota_rule">
+		</div>
+			<div id="post-13357" class="post-13357 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/03/new-hero-mars/" title="Permalink to New Hero — Mars" rel="bookmark">New Hero — Mars</a></h2>
+
+			<div class="entry-meta">
+				March 5, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><a href="http://www.dota2.com/mars"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/ylmfjmarsrevgg_blog.png" alt="" width="100%" /></a></p>
+<p>Mars, god of war and first son of heaven, has now joined the battle of the Ancients.</p>
+<p>Abandoning the callous ways of his past and embracing a new identity unburdened by the legacies of his father&#8217;s archaic pantheon, Mars has turned over a new spear. Vowing to tear down the remnants of the savage old world to build a new empire, Mars is at last ready to assume the true mantle of leadership over gods and men, a position he now realizes has been wasted for eons by the petty whims of Zeus.</p>
+<p>Learn more about Mars and his abilities <a href="http://www.dota2.com/mars">here</a>. Or, better yet, launch Dota 2 yourself and get ready to impale your enemies for the glory of the god of war.</p>
+<p><b style="color: #b7b7b7">Drow Ranger Remodel</b></p>
+<p><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/ysnjremodrowbg_blog.png" alt="" width="100%" /></p>
+<p>Never one to seek the spotlight, Drow Ranger thought to sneak into the lanes without announcing her redesigned model, but the glory of Mars&#8217; arrival has shone a light across the battlefield that not even Traxex can escape.</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+				<!-- inter-post rule -->
+		<div class="dota_rule">
+		</div>
+			<div id="post-13336" class="post-13336 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/02/new-bloom-rewards/" title="Permalink to New Bloom Rewards" rel="bookmark">New Bloom Rewards</a></h2>
+
+			<div class="entry-meta">
+				February 1, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/nbnybhr_newbloom_blog.png" alt="" width="100%" /></p>
+<p>In celebration of the Lunar New Year, each victory you earn in normal Dota Matchmaking from February 1 &#8211; 11 will grant you progress along the New Bloom rewards line, where you&#8217;ll find a host of seasonal delights including gifts, celebrations, and chat wheel sounds.</p>
+<p>Start off by claiming your New Bloom consumables bundle at level one, and bring some festive flair into the lanes with New Bloom Celebrations. Use celebrations in your games safe in the knowledge that you can earn more on the rewards line or by purchasing a fresh bundle with shards.</p>
+<p>As you advance along the line, you can even help your friends get into the spirit of the season by gifting them free spins on the New Bloom rewards wheel. Every spin you and your friends make offers the chance to win an indescribably-rare Nian Courier.</p>
+<p>You&#8217;ll receive 200 points for a Normal victory, 100 points for Turbo, and the first win of each day will grant a bonus of 1250 points. </p>
+<p>You&#8217;ll be able to use your consumables and chat wheel sounds in your games until March 1, so prepare yourself for battle and start the New Year in style.</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+				<!-- inter-post rule -->
+		<div class="dota_rule">
+		</div>
+			<div id="post-13314" class="post-13314 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/01/new-ranked-season-update/" title="Permalink to New Ranked Season Update" rel="bookmark">New Ranked Season Update</a></h2>
+
+			<div class="entry-meta">
+				January 29, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/mjdtpl_plus_blog.png" alt="" width="100%" /></p>
+<p>Today&#8217;s update unveils a New Ranked Season, a gameplay balance update and new additions to Dota Plus, including four exclusive Dota Plus item sets for Monkey King, Medusa, Enchantress, and Centaur.</p>
+<p>Dota Plus subscribers also have a new set of Seasonal Quests to complete during the new ranked season. Check out the full list on the new Dota Plus home tab, available by clicking your shard total in the top-right corner of your screen.</p>
+<p>To mark the start of a new Ranked Season, all Rank Medals have been reset and players have a chance to recalibrate. In this new season, Rank Medals now have seven star tiers instead of five, offering more rank precision and opportunities to advance. As a bonus, players in each Rank tier will gain access to new emoticons based on their rank. </p>
+<p>Also included for the new ranked season, you can now see your numerical behavior score in your profile and conduct summaries, allowing greater insight into how conduct affects everyone&#8217;s enjoyment of the game.</p>
+<p>Along with today&#8217;s update, the 7.21 balance patch is now available. Check out a full <a href="http://www.dota2.com/news/updates/47930/">list of the changes here</a>.</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+				<!-- inter-post rule -->
+		<div class="dota_rule">
+		</div>
+			<div id="post-13294" class="post-13294 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/01/the-chongqing-major/" title="Permalink to The Chongqing Major" rel="bookmark">The Chongqing Major</a></h2>
+
+			<div class="entry-meta">
+				January 20, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><a href="https://steam.tv/dota"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/dpc_major_blog.png" alt="" width="100%" /></a></p>
+<p>The Chongqing Major Main Event bracket has been set, and sixteen of the top Dota teams in the world now wage battle over the winner&#8217;s share of the $1,000,000 USD and 15,000 DPC points that hang in the balance.</p>
+<p>Fans can <a href="https://steam.tv/dota">tune in each day now through January 27 on SteamTV</a> to catch all of the playoff action. With 4,950 DPC points awaiting the winners less than halfway through the competitive season, it&#8217;s anyone&#8217;s guess what the Dota Pro Circuit standings might look like in one week&#8217;s time. Will an established contender strengthen their grip on the leaderboard, or can a surprising upstart upset the status quo?</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+				<!-- inter-post rule -->
+		<div class="dota_rule">
+		</div>
+			<div id="post-13261" class="post-13261 post type-post status-publish format-standard hentry category-uncategorized">
+			<h2 class="entry-title"><a href="http://blog.dota2.com/2019/01/true-sight-the-international-2018/" title="Permalink to True Sight — The International 2018" rel="bookmark">True Sight — The International 2018</a></h2>
+
+			<div class="entry-meta">
+				January 14, 2019 - Dota Team			</div><!-- .entry-meta -->
+
+				<div class="entry-content">
+				<p><a href="http://steam.tv/dota2"><img src="http://cdn.dota2.com/apps/dota2/images/blogfiles/tslwpog_blog_a.jpg" alt="" width="100%" /></a></p>
+<p>Join world champions OG and a sold-out crowd as they broadcast live from the Nordisk Film Cinema Palads in Copenhagen, Denmark for the world premiere of <em>True Sight — The International 2018</em>.</p>
+<p><a href="http://steam.tv/dota2">Tune in live on Tuesday, January 15 from 11:00am PST</a>, with hosts Kaci and PyrionFlax, to journey behind the scenes of OG&#8217;s epic five-game clash against PSG.LGD, to be followed by a live Q&#038;A session with the audience and the champs themselves.</p>
+<p>Last year, Dota fans around the world watched as history took place in Vancouver. Now it&#8217;s time to look back and see exactly how the story unfolded.</p>
+					<br clear="left" />
+							</div><!-- .entry-content -->
+	
+		</div><!-- #post-## -->
+
+
+		
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://blog.dota2.com/page/2/?l=english" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+					<div class="nav-next"></div>
+				</div><!-- #nav-below -->
+				<br clear="right" />
+			</div>
+		</div><!-- /mainContent -->
+		<div id="mainContentBottomBG"></div>
+	</div><!-- /mainContentBG -->
+</div><!-- /mainContentSideBG -->
+<div id="footer" role="contentinfo">
+
+
+
+			<div id="footer-widget-area" role="complementary">
+
+				<div id="first" class="widget-area">
+					<ul class="xoxo">
+								<li id="dota2-recent-posts-4" class="widget-container valve_widget_recent_entries">		<div class="rightLinksTitle">Previous Entries</div>		
+					<div class="archive_column">
+									<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/03/new-dota-plus-feature/" title="New Dota Plus Feature">New Dota Plus Feature</a>
+				<div class="recent_entry_date">Mar. 15 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/03/new-hero-mars/" title="New Hero — Mars">New Hero — Mars</a>
+				<div class="recent_entry_date">Mar. 5 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/02/new-bloom-rewards/" title="New Bloom Rewards">New Bloom Rewards</a>
+				<div class="recent_entry_date">Feb. 1 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/new-ranked-season-update/" title="New Ranked Season Update">New Ranked Season Update</a>
+				<div class="recent_entry_date">Jan. 29 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/the-chongqing-major/" title="The Chongqing Major">The Chongqing Major</a>
+				<div class="recent_entry_date">Jan. 20 2019</div>
+			</div>
+							</div>
+				<div class="archive_column">
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2019/01/true-sight-the-international-2018/" title="True Sight — The International 2018">True Sight — The International 2018</a>
+				<div class="recent_entry_date">Jan. 14 2019</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/12/true-sight-world-premiere/" title="True Sight World Premiere">True Sight World Premiere</a>
+				<div class="recent_entry_date">Dec. 22 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/12/rubick-arcana-frosthaven-event/" title="Rubick Arcana &#038; Frosthaven Event">Rubick Arcana &#038; Frosthaven Event</a>
+				<div class="recent_entry_date">Dec. 19 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/12/tnc-and-the-chongqing-major/" title="TNC and the Chongqing Major">TNC and the Chongqing Major</a>
+				<div class="recent_entry_date">Dec. 3 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/11/regional-qualifiers/" title="Regional Qualifiers">Regional Qualifiers</a>
+				<div class="recent_entry_date">Nov. 28 2018</div>
+			</div>
+							</div>
+				<div class="archive_column">
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/11/7-20-gameplay-update/" title="7.20 Gameplay Update">7.20 Gameplay Update</a>
+				<div class="recent_entry_date">Nov. 19 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/11/the-major-and-professional-dota-players/" title="The Major and Professional Dota Players">The Major and Professional Dota Players</a>
+				<div class="recent_entry_date">Nov. 10 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/11/tournoi-majeur-de-kuala-lumpur/" title="Tournoi majeur de Kuala Lumpur">Tournoi majeur de Kuala Lumpur</a>
+				<div class="recent_entry_date">Nov. 6 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/11/the-kuala-lumpur-major/" title="The Kuala Lumpur Major">The Kuala Lumpur Major</a>
+				<div class="recent_entry_date">Nov. 5 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/10/treasure-update/" title="Treasure Update">Treasure Update</a>
+				<div class="recent_entry_date">Oct. 17 2018</div>
+			</div>
+							</div>
+				<div class="archive_column">
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/09/dota-plus-end-of-summer-update/" title="Dota Plus End-of-Summer Update">Dota Plus End-of-Summer Update</a>
+				<div class="recent_entry_date">Sep. 13 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/08/the-international-grand-champions-2/" title="The International Grand Champions">The International Grand Champions</a>
+				<div class="recent_entry_date">Aug. 27 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/08/new-hero-grimstroke/" title="New Hero — Grimstroke">New Hero — Grimstroke</a>
+				<div class="recent_entry_date">Aug. 24 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/08/the-main-event-with-new-steam-broadcasting/" title="The Main Event with New Steam Broadcasting">The Main Event with New Steam Broadcasting</a>
+				<div class="recent_entry_date">Aug. 20 2018</div>
+			</div>
+								<div class="recent_entry">
+				<a href="http://blog.dota2.com/2018/08/trove-carafe-immortals-2/" title="Trove Carafe Immortals">Trove Carafe Immortals</a>
+				<div class="recent_entry_date">Aug. 18 2018</div>
+			</div>
+							</div>
+				<div class="archive_column">
+										</div>
+				</li>					</ul>
+				</div><!-- #first .widget-area -->
+
+
+
+
+			</div><!-- #footer-widget-area -->
+
+
+	<div class="legal_footer">
+		<img id="valveLogoLegal" src="http://media.steampowered.com/apps/dota2/images/blogfiles/valve_logo_footer.png" width="112" height="34" border="0" />
+		&copy; Valve Corporation, all rights reserved. Valve, the Valve logo, Steam, the Steam logo, Source, the Source logo, Valve Source and Dota are trademarks and/or registered trademarks of Valve Corporation. 
+	</div>
+</div><!-- #footer -->
+<script type='text/javascript' src='http://blog.dota2.com/wp-includes/js/wp-embed.min.js?ver=5.0.4'></script>
+</body>
+</html>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Page Caching using disk (Requested URI contains query) 
+Database Caching 1/76 queries in 0.056 seconds using disk (Request-wide modification query)
+
+Served from: blog.dota2.com @ 2019-04-29 20:35:22 by W3 Total Cache
+-->

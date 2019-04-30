@@ -1,0 +1,25 @@
+#box1 {
+	border: 2px solid rgb(128, 82, 21); /*shortcut version*/
+	height: 50px;
+	width: 50%;
+	vertical-align: center;
+	line-height: 50px;
+	text-align: center;
+}
+
+#box2 {
+	border: 2px solid black;
+}
+
+#box3 {
+	border: 2px solid black;
+}
+
+p {
+	font-family: 'Rubik', sans-serif;
+}
+
+li {
+
+	font-family: 'Overpass', sans-serif;
+}
